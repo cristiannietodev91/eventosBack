@@ -1,10 +1,10 @@
 module.exports =
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "branch",
-    "host": "localhost",
+    "username": "admin",
+    "password": "Pv5CFY6gcvHEp8wk",
+    "database": "callcenter",
+    "host": "databasec3xsmart.csw5vlnybfvb.us-east-2.rds.amazonaws.com",
     "dialect": "mysql",
     define: {
       underscored: false,

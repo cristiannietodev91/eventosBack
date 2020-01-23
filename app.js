@@ -1,18 +1,17 @@
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/usersRoute');
-var tallerRouter = require('./routes/tallerRoute');
-var vehiculoRouter = require('./routes/vehiculoRoute');
-var marcaRouter = require('./routes/marcaRoute');
-var citaRouter = require('./routes/citaRoute');
+var contactRouter = require('./routes/contactRoute');
+
 
 var app = express();
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,11 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/usuario', usersRouter);
-app.use('/taller', tallerRouter);
-app.use('/vehiculo', vehiculoRouter);
-app.use('/marca', marcaRouter);
-app.use('/cita', citaRouter);
+app.use('/contact', contactRouter);
 
 
 app.use(logErrors);

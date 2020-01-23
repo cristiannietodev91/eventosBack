@@ -3,21 +3,21 @@ const models = require("../database/models");
 module.exports = {
     findAll: function (cb) {
         // Find all users
-        models.Taller.findAll().then(talleres => {
-            cb(null, talleres);
+        models.contacts.findAll().then(contacts => {
+            cb(null, contacts);
         });
     },
-    create: function (taller, cb) {
+    create: function (contact, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {
-            return models.Taller.create(taller).then(taller => {
-                return taller;
+            return models.contacts.create(contact).then(contact => {
+                return contact;
             });
         }).then(function (result) {
             if (result) {
-                console.debug('Resultado transaccion crear taller :::: >', result);
-                var tallerCreated = result.dataValues;
-                cb(null, tallerCreated);
+                console.debug('Resultado despues contacto :::: >', result);
+                var contactCreated = result.dataValues;
+                cb(null, contactCreated);
             } else {
                 cb(null, null);
             }
@@ -26,17 +26,17 @@ module.exports = {
             cb(err, null);
         });
     },
-    update: function (IdTaller, taller, cb) {
+    update: function (IdContacts, contact, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {
-            return models.Taller.update(taller, {
-                where: { IdTaller: IdTaller }
-            }).then(taller => {
-                return taller;
+            return models.contacts.update(contact, {
+                where: { IdContacts: IdContacts }
+            }).then(contact => {
+                return contact;
             });
         }).then(function (result) {
             if (result) {
-                console.debug('Resultado despues de actualizar taller :::: >', result);
+                console.debug('Resultado despues de actualizar contacto :::: >', contacto);
                 cb(null, result);
             } else {
                 cb(null, null);
@@ -45,17 +45,17 @@ module.exports = {
             cb(err, null);
         });
     },
-    getById: function (IdTaller, cb) {
+    getById: function (IdContacts, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {
-            return models.Taller.findByPk(IdTaller).then(taller => {
-                return taller;
+            return models.contacts.findByPk(IdContacts).then(contact => {
+                return contact;
             });
         }).then(function (result) {
             if (result) {
-                console.debug('Resultado despues getTaller By Id :::: >', result);
-                var tallerCreated = result.dataValues;
-                cb(null, tallerCreated);
+                console.debug('Resultado despues getContact By Id :::: >', result);
+                var contact = result.dataValues;
+                cb(null, contact);
             } else {
                 cb(null, null);
             }
@@ -63,16 +63,16 @@ module.exports = {
             cb(err, null);
         });
     },
-    deleteById: function (IdTaller, cb) {
+    deleteById: function (IdContacts, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {
-            return models.Taller.destroy({
-                where: { IdTaller: IdTaller }
+            return models.contacts.destroy({
+                where: { IdContacts: IdContacts }
             }).then(deleted => {
                 return deleted;
             });
         }).then(function (result) {
-            console.log('Resultado despues Eliminar taller :::: >', result);
+            console.log('Resultado despues Eliminar contacto :::: >', result);
             cb(null, result);
         }).catch(function (err) {
             cb(err, null);
