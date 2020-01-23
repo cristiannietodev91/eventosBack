@@ -1,6 +1,6 @@
 module.exports =
 {
-  "development": {
+  "production": {
     "username": "admin",
     "password": "Pv5CFY6gcvHEp8wk",
     "database": "callcenter",
@@ -27,7 +27,7 @@ module.exports =
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
+  "development": {
     "username": "root",
     "password": null,
     "database": "database_production",
