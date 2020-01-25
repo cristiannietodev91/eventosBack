@@ -7,6 +7,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var contactRouter = require('./routes/contactRoute');
+var telefonoRouter = require('./routes/telefonoRouter');
+var tipificacionRouter = require('./routes/tipificacionesRouter');
+var gestionContactoRouter = require('./routes/gestionContactoRoute');
+var gestionTelefonoRouter = require('./routes/gestionTelefonoRoute');
 
 
 var app = express();
@@ -20,6 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/contact', contactRouter);
+app.use('/telefono', telefonoRouter);
+app.use('/tipificacion', tipificacionRouter);
+app.use('/gestionContacto', gestionContactoRouter);
+app.use('/gestionTelefono', gestionTelefonoRouter);
+
 
 
 app.use(logErrors);
