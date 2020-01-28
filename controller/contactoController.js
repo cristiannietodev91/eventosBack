@@ -1,4 +1,5 @@
 var contactoDAO = require('../dao/contactoDAO');
+var telefonoDAO = require('../dao/telefonoDAO');
 var HttpStatus = require('http-status-codes');
 
 const getAllContactos = (req, res, next) => {
@@ -115,7 +116,23 @@ const findContactoById = (req, res, next) => {
                 }                
             } else {
                 if (contact) {
-                    return res.status(HttpStatus.OK).json(contact);
+                    telefonoDAO.getByFilter({IdentificacionContacto : contact.Identificacion},function (error, telefonos) {
+                        if (error) {
+                            if (error.errors) {
+                                return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error.errors[0] });
+                            } else {
+                                return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: error.message });
+                            }
+                        } else {
+                            if (telefonos) {
+                                contact.telefonos = telefonos;
+                                return res.status(HttpStatus.OK).json(contact);
+                            }else{
+                                contact.telefonos = [];
+                                return res.status(HttpStatus.OK).json(contact);
+                            }
+                        }
+                    })                    
                 } else {
                     return res.status(HttpStatus.OK).json({});
                 }

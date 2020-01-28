@@ -63,6 +63,30 @@ module.exports = {
             cb(err, null);
         });
     },
+    getByFilter: function (filter, cb) {
+        // Find all users
+        return models.sequelize.transaction((t1) => {
+            return models.telefonos.findAll({
+                where: filter
+            }).then(telefonos => {
+                return telefonos;
+            });
+        }).then(async function (result) {
+            //console.debug('Resultado findAll telefonos :::>',result);
+            if (result) {
+                var resultTelefonos = new Array();
+                for await(resultTel of result){
+                    //console.debug('Resultado array telefonos :::>',resultTel);
+                    resultTelefonos.push(resultTel.dataValues);
+                }
+                cb(null, resultTelefonos);
+            } else {
+                cb(null, null);
+            }
+        }).catch(function (err) {
+            cb(err, null);
+        });
+    },
     deleteById: function (idtelefono, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {

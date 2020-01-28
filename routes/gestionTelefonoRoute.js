@@ -3,7 +3,7 @@ var gestionTelefonoController = require('../controller/gestionTelefonoController
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/createGestion', gestionTelefonoController.createGestion);
+router.post('/createGestion', gestionTelefonoController.createGestion);
 
 router.get('/getById/:Id', gestionTelefonoController.findGestionById);
 

@@ -30,7 +30,6 @@ app.use('/gestionContacto', gestionContactoRouter);
 app.use('/gestionTelefono', gestionTelefonoRouter);
 
 
-
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);

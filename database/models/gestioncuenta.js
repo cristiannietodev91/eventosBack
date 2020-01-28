@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    idtipificacioncontact: {
-      type: Sequelize.INTEGER,
+    codigoTipificacion: {
+      type: Sequelize.STRING,
       allowNull: false
     },
     observacion: {
