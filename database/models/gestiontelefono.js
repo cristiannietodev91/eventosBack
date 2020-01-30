@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     }    
   }, {});
   GestionTelefono.associate = function (models) {
-    
+    GestionTelefono.belongsTo(models.telefonos, {
+      foreignKey: 'idtelefono',
+      target_id: 'idtelefono',
+      as: 'telefono'
+  });
   };
   return GestionTelefono;
 };

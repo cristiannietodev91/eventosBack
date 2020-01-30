@@ -7,6 +7,10 @@ router.post('/createGestion', gestionTelefonoController.createGestion);
 
 router.get('/getById/:Id', gestionTelefonoController.findGestionById);
 
-router.post('/getAll', gestionTelefonoController.getAllGestiones);
+router.get('/getAll', gestionTelefonoController.getAllGestiones);
+
+router.get('/getAllByIdentificacion', gestionTelefonoController.getAllGestionesByIdentificacion);
+
+
 
 module.exports = router;

@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     }    
   }, {});
   Telefono.associate = function (models) {
-    
+    Telefono.hasMany(models.gestiontelefono, {
+      foreignKey: 'idtelefono',
+      as: 'telefonos'
+    });
   };
   return Telefono;
 };

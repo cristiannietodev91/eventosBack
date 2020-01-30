@@ -7,6 +7,23 @@ module.exports = {
             cb(null, gestiones);
         });
     },
+    findAllByFilter: function (filter,cb) {
+        // Find all users
+        models.gestiontelefono.findAll({
+            include:
+            {
+                model: models.telefonos,
+                as: 'telefono',
+                where: filter,
+            },
+            order: [
+                // Will escape title and validate DESC against a list of valid direction parameters
+                ['idgestiontelefono', 'DESC']
+            ]
+        }).then(gestiones => {
+            cb(null, gestiones);
+        });
+    },
     create: function (gestion, cb) {
         // Find all users
         return models.sequelize.transaction((t1) => {
