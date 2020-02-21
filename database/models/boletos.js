@@ -2,26 +2,33 @@
 const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const GestionCuenta = sequelize.define('gestioncuenta', {
-    idgestioncuenta: {
+  const boleto = sequelize.define('boleto', {
+    idboleto: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    Identificacion: {
+    idevento: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    codigoTipificacion: {
+    tipoboleto: {
       type: Sequelize.STRING,
       allowNull: false
     },
     observacion: {
       type: Sequelize.STRING      
+    },
+    uid: {
+      type: Sequelize.STRING      
     }    
   }, {});
-  GestionCuenta.associate = function (models) {
-    
+  boleto.associate = function (models) {
+    boleto.belongsTo(models.evento, {
+      foreignKey: 'idevento',
+      target_id: 'idevento',
+      as: 'evento'
+  });
   };
-  return GestionCuenta;
+  return boleto;
 };

@@ -1,10 +1,13 @@
+
+require('dotenv').config()
+
 module.exports =
 {
   "production": {
     "username": "admin",
-    "password": "Pv5CFY6gcvHEp8wk",
-    "database": "callcenter",
-    "host": "databasec3xsmart.csw5vlnybfvb.us-east-2.rds.amazonaws.com",
+    "password": process.env.DBPASSWORD,
+    "database": process.env.DBNAME,
+    "host": process.env.DBHOST,
     "dialect": "mysql",
     define: {
       underscored: false,
@@ -28,10 +31,10 @@ module.exports =
     "dialect": "mysql"
   },
   "development": {
-    "username": "admin",
-    "password": "Pv5CFY6gcvHEp8wk",
-    "database": "callcenter",
-    "host": "databasec3xsmart.csw5vlnybfvb.us-east-2.rds.amazonaws.com",
+    "username": "root",
+    "password": process.env.DBPASSWORD,
+    "database": process.env.DBNAME,
+    "host": process.env.DBHOST,
     "dialect": "mysql",
     define: {
       underscored: false,

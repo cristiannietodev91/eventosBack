@@ -1,6 +1,10 @@
 {
-  "name": "crm",
-  "version": "0.0.0",
+  "name": "eventosback",
+  "version": "0.0.2",
+  "author": {
+    "name": "Cristian Nieto",
+    "email": "cristianandresnieto@gmail.com"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -11,7 +15,8 @@
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "express": "~4.16.1",    
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
     "http-status-codes": "^1.4.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.1.0",
