@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var eventoRouter = require('./routes/eventoRoute');
-var boletoRouter = require('./routes/boletoRoute');
+let indexRouter = require('./routes/index');
+let eventoRouter = require('./routes/eventoRoute');
+let boletoRouter = require('./routes/boletoRoute');
+let pokerRouter = require('./routes/pokerRouter');
 
 require('dotenv').config()
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/evento', eventoRouter);
 app.use('/boleto', boletoRouter);
+app.use('/poker', pokerRouter);
 
 
 app.use(logErrors);
